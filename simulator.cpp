@@ -1,11 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include "instruction.h"
 using namespace std;
 
-int read_binary_int(ifstream *in)
+unsigned int read_binary_int(ifstream *in)
 {
-    int c=0, rt=0;
+   	unsigned int c=0, rt=0;
     in->read((char*)&c,1);
     rt+=c;
     in->read((char*)&c,1);
@@ -21,8 +22,13 @@ int main(int argc, char *argv[])
 {
     ifstream iin(argv[1], ios::in | ios::binary);
     ifstream din(argv[2], ios::in | ios::binary);
-    while(!iin.eof()){
-        cout << setfill('0') << setw(8) << hex << read_binary_int(&iin) << endl;
-    }
+	unsigned int ins, N;
+	ins = read_binary_int(&iin);
+	N = read_binary_int(&iin);
+	cout << "N = " << N << endl;
+	for(int i=0; i<N; ++i){
+		ins = read_binary_int(&iin);
+		decode_instructions(ins);
+	}
     return 0;
 }
