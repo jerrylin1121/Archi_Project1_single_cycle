@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "instruction.h"
 #include "memory.h"
+#include "regfile.h"
 
 using namespace std;
 
@@ -20,5 +21,6 @@ int main(int argc, char *argv[])
 	for(int i=0; i<num_of_data; ++i){
 		cout << setw(2) << hex << data_mem[i] << endl;
 	}
+	show_all_reg();	
     return 0;
 }

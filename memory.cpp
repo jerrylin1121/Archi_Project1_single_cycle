@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "regfile.h"
 #include "memory.h"
 using namespace std;
 unsigned int PC_ini;
@@ -29,6 +30,7 @@ unsigned int read_byte_int(ifstream *in)
 void load_instruction(ifstream *in)
 {
 	PC_ini = read_4_byte_int(in);
+	set_reg_value(34, PC_ini);
 	num_of_ins = read_4_byte_int(in);
 	ins_mem = new unsigned int[1024];
 	for(int i=0; i<num_of_ins; ++i){
