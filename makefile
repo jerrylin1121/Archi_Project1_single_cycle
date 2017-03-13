@@ -8,5 +8,5 @@ single_cycle.o:single_cycle.cpp
 	g++ -c simulator.cpp -o simulator.o
 clean:
 	rm -f single_cycle simulator.o instruction.o memory.o
-open_testcase:
+branch:
 	./single_cycle ../testcase/open_testcase/branch/iimage.bin ../testcase/open_testcase/branch/dimage.bin

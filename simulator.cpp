@@ -10,14 +10,15 @@ int main(int argc, char *argv[])
 {
     ifstream iin(argv[1], ios::in | ios::binary);
     ifstream din(argv[2], ios::in | ios::binary);
-	unsigned int PC_value;
 	unsigned int Sp_ini;
-	PC_value = read_binary_int(&iin);
-	Sp_ini = read_binary_int(&din);
+	Sp_ini = read_4_byte_int(&din);
 	load_instruction(&iin);
 	load_data(&din);
 	for(int i=0; i<num_of_ins; ++i){
-		decode_instructions(ins_mem[i]);
+		decode_instructions(ins_mem[i+PC_ini]);
+	}
+	for(int i=0; i<num_of_data; ++i){
+		cout << setw(2) << hex << data_mem[i] << endl;
 	}
     return 0;
 }

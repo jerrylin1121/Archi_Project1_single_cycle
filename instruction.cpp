@@ -116,13 +116,13 @@ void decode_instructions(unsigned int in)
 			cout << "slti $" << rt << " $" << rs << " " << setfill('0') << setw(4) << hex << C << endl;
 			break;
 		case 0x04:
-			cout << "beqi $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
+			cout << "beq $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
 			break;
 		case 0x05:
-			cout << "bnei $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
+			cout << "bne $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
 			break;
 		case 0x07:
-			cout << "bgtzi $" << rs << " " << setfill('0') << setw(4) << hex << C << endl;
+			cout << "bgtz $" << rs << " " << setfill('0') << setw(4) << hex << C << endl;
 			break;
 		//J-type Instructions
 		case 0x02:
