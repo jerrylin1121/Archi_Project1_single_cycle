@@ -12,3 +12,11 @@ clean:
 	rm -f single_cycle simulator.o instruction.o memory.o regfile.o
 branch:
 	./single_cycle ../testcase/open_testcase/branch/iimage.bin ../testcase/open_testcase/branch/dimage.bin
+fib_dp:
+	./single_cycle ../testcase/open_testcase/fib_dp/iimage.bin ../testcase/open_testcase/fib_dp/dimage.bin
+func:
+	./single_cycle ../testcase/open_testcase/func/iimage.bin ../testcase/open_testcase/func/dimage.bin
+mult:
+	./single_cycle ../testcase/open_testcase/mult/iimage.bin ../testcase/open_testcase/mult/dimage.bin
+recur:
+	./single_cycle ../testcase/open_testcase/recur/iimage.bin ../testcase/open_testcase/recur/dimage.bin

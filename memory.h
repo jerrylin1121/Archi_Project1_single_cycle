@@ -11,3 +11,5 @@ void load_instruction(ifstream*);
 void load_data(ifstream*);
 unsigned int read_4_byte_int(ifstream*);
 unsigned int read_byte_int(ifstream*);
+int load_data(int, int);
+void save_data(int, int, int);
