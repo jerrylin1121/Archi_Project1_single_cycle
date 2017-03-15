@@ -204,8 +204,8 @@ void decode_instructions(unsigned int in)
 			if( C & 0x00008000){
 				C = C | 0xFFFF0000;
 			}
-			break;
 			save_data(reg_value[rs]+C, 4, reg_value[rt]);
+			break;
 		case 0x29:
 //			cout << "sh $" << rt << " " << setfill('0') << setw(4) << hex << C << "($" << rs << ")" << endl;
 			if( C & 0x00008000){
@@ -255,18 +255,27 @@ void decode_instructions(unsigned int in)
 			break;
 		case 0x04:
 //			cout << "beq $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
+			if( C & 0x00008000){
+				C = C | 0xffff0000;
+			}
 			if(reg_value[rs]==reg_value[rt]){
 				reg_value[PC] = reg_value[PC] + 4*C;
 			}
 			break;
 		case 0x05:
 //			cout << "bne $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
+			if( C & 0x00008000){
+				C = C | 0xffff0000;
+			}
 			if(reg_value[rs]!=reg_value[rt]){
 				reg_value[PC] = reg_value[PC] + 4*C;
 			}
 			break;
 		case 0x07:
 //			cout << "bgtz $" << rs << " " << setfill('0') << setw(4) << hex << C << endl;
+			if( C & 0x00008000){
+				C = C | 0xffff0000;
+			}
 			if(reg_value[rs]>0){
 				reg_value[PC] = reg_value[PC] + 4*C;
 			}

@@ -7,6 +7,7 @@ unsigned int *ins_mem;
 unsigned int num_of_ins;
 unsigned int *data_mem;
 unsigned int num_of_data;
+extern fstream snap;
 unsigned int read_4_byte_int(ifstream *in)
 {
 	unsigned int c=0, rt=0;
@@ -61,7 +62,7 @@ void save_data(int index, int size, int value)
 	}else if(size==2){
 		data_mem[index] = (_value & 0x0000ff00)>>8;
 		data_mem[index+1] = (_value & 0x000000ff);
-	}else if(size ==4){
+	}else if(size==4){
 		data_mem[index] = (_value & 0xff000000)>>24;
 		data_mem[index+1] = (_value & 0x00ff0000)>>16;
 		data_mem[index+2] = (_value & 0x0000ff00)>>8;

@@ -6,7 +6,6 @@
 #include "regfile.h"
 
 using namespace std;
-
 fstream snap("snapshot.rpt", fstream::out);
 
 int main(int argc, char *argv[])
