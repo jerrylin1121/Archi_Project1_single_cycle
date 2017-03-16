@@ -24,9 +24,9 @@ void show_change_reg(void)
 	for(set<int>::iterator it = changing_set.begin(); it!=changing_set.end(); ++it){
 		if(*it <= 31)
 			snap << "$" << setfill('0') << setw(2) << dec << *it << ": 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[*it] << endl;
-		if(*it==32)
+		if(*it==HI)
 			snap << "$HI: 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[HI] << endl;
-		if(*it==33)
+		if(*it==LO)
 			snap << "$LO: 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[LO] << endl;
 	}
 	snap << "PC: 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[PC] << endl;
