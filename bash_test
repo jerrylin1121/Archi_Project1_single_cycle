@@ -1,0 +1,20 @@
+#!/bin/bash
+function recur {
+	if [ -n "$(find . -maxdepth 1 -iname "*.bin")" ]; then
+		realpath .
+		cp ~/Archi2017_Project1/single_cycle/simulator/makefile .
+		make test
+		make clean_test
+		echo 
+	fi	
+	for file in ./*; do
+		if [ -d $file ]; then
+			cd $file
+			recur
+			cd ..
+		fi
+	done;
+}
+
+cd $1
+recur

@@ -12,19 +12,10 @@ simulator.o:simulator.cpp
 	g++ -c simulator.cpp -o simulator.o
 clean:
 	rm -f single_cycle simulator.o instruction.o memory.o regfile.o error.o snapshot.rpt error_dump.rpt
-branch:
-	./single_cycle ../testcase/open_testcase/branch/iimage.bin ../testcase/open_testcase/branch/dimage.bin
-	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/branch/snapshot.rpt ./snapshot.rpt
-fib_dp:
-	./single_cycle ../testcase/open_testcase/fib_dp/iimage.bin ../testcase/open_testcase/fib_dp/dimage.bin
-	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/fib_dp/snapshot.rpt ./snapshot.rpt
-func:
-	./single_cycle ../testcase/open_testcase/func/iimage.bin ../testcase/open_testcase/func/dimage.bin
-	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/func/snapshot.rpt ./snapshot.rpt
-mult:
-	./single_cycle ../testcase/open_testcase/mult/iimage.bin ../testcase/open_testcase/mult/dimage.bin
-	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/mult/snapshot.rpt ./snapshot.rpt
-recur:
-	./single_cycle ../testcase/open_testcase/recur/iimage.bin ../testcase/open_testcase/recur/dimage.bin
-	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/recur/snapshot.rpt ./snapshot.rpt
-all: single_cycle branch fib_dp func recur mult
+clean_test:
+	rm -f snapshot.rpt _snapshot.rpt error_dump.rpt _error_dump.rpt makefile
+test:
+	~/Archi2017_Project1/single_cycle/simulator/single_cycle
+	~/Archi2017_Project1/archiTA/simulator/single_cycle
+	diff ./snapshot.rpt ./_snapshot.rpt
+	diff ./error_dump.rpt ./_error_dump.rpt

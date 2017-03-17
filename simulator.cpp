@@ -6,12 +6,12 @@
 #include "regfile.h"
 
 using namespace std;
-fstream snap("snapshot.rpt", fstream::out);
+fstream snap("_snapshot.rpt", fstream::out);
 int cycle = 0;
-int main(int argc, char *argv[])
+int main()
 {
-    ifstream iin(argv[1], ios::in | ios::binary);
-    ifstream din(argv[2], ios::in | ios::binary);
+    ifstream iin("./iimage.bin", ios::in | ios::binary);
+    ifstream din("./dimage.bin", ios::in | ios::binary);
 	load_instruction(&iin);
 	load_data(&din);
 	snap << "cycle 0" << endl;

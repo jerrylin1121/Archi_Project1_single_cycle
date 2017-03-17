@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "memory.h"
 #include "error.h"
-fstream error("error_dump.rpt", ios::out);
+fstream error("_error_dump.rpt", ios::out);
 extern int cycle;
 bool write_reg0(int index)
 {
