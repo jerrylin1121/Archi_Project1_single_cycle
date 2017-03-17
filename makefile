@@ -11,11 +11,14 @@ instruction.o:instruction.cpp
 simulator.o:simulator.cpp
 	g++ -c simulator.cpp -o simulator.o
 clean:
-	rm -f single_cycle simulator.o instruction.o memory.o regfile.o error.o snapshot.rpt error_dump.rpt
+	rm -f single_cycle simulator.o instruction.o memory.o regfile.o error.o snapshot.rpt error_dump.rpt result
 clean_test:
-	rm -f snapshot.rpt _snapshot.rpt error_dump.rpt _error_dump.rpt makefile
-test:
+	rm -f snapshot.rpt _snapshot.rpt error_dump.rpt _error_dump.rpt makefile result
+my:
 	~/Archi2017_Project1/single_cycle/simulator/single_cycle
+goldon:
 	~/Archi2017_Project1/archiTA/simulator/single_cycle
+diff_snap:
 	diff ./snapshot.rpt ./_snapshot.rpt
+diff_error:
 	diff ./error_dump.rpt ./_error_dump.rpt
