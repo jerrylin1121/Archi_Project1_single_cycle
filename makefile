@@ -1,15 +1,17 @@
-single_cycle:simulator.o instruction.o memory.o regfile.o
-	g++ -o single_cycle simulator.o instruction.o memory.o regfile.o
+single_cycle:simulator.o instruction.o memory.o regfile.o error.o
+	g++ -o single_cycle simulator.o instruction.o memory.o regfile.o error.o
+error.o:error.cpp
+	g++ -c error.cpp -o error.o
 regfile.o:regfile.cpp
 	g++ -c regfile.cpp -o regfile.o
 memory.o:memory.cpp
 	g++ -c memory.cpp -o memory.o
 instruction.o:instruction.cpp
-	g++ -std=c++11 -c instruction.cpp -o instruction.o
+	g++ -c instruction.cpp -o instruction.o
 simulator.o:simulator.cpp
 	g++ -c simulator.cpp -o simulator.o
 clean:
-	rm -f single_cycle simulator.o instruction.o memory.o regfile.o snapshot.rpt
+	rm -f single_cycle simulator.o instruction.o memory.o regfile.o error.o snapshot.rpt error_dump.rpt
 branch:
 	./single_cycle ../testcase/open_testcase/branch/iimage.bin ../testcase/open_testcase/branch/dimage.bin
 	diff ~/Archi2017_Project1/archiTA/testcase/open_testcase/branch/snapshot.rpt ./snapshot.rpt

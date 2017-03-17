@@ -7,7 +7,7 @@
 
 using namespace std;
 fstream snap("snapshot.rpt", fstream::out);
-
+int cycle = 0;
 int main(int argc, char *argv[])
 {
     ifstream iin(argv[1], ios::in | ios::binary);
@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
 	snap << "cycle 0" << endl;
 	show_all_reg();
 	snap << endl << endl;
-	for(int i=0; ;++i){
+	while(++cycle){
 		reg_value[PC] += 4;
 		decode_instructions(ins_mem[(reg_value[(PC)]/4)-1]);
-		snap << "cycle " << dec << i+1 << endl;
+		snap << "cycle " << dec << cycle << endl;
 		show_change_reg();
 		snap << endl << endl;
 	}
