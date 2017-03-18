@@ -171,6 +171,11 @@ void decode_instructions(unsigned int in)
 					reg_value[rd] = reg_value[LO];
 					if(tmp!=reg_value[rd]) show_set.insert(rd);
 					break;
+				default:
+//					snap << "illegal" << endl;
+					cout << "illegal instruction found at 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[PC]-4 << endl;;
+					exit(0);
+					break;
 			}
 			break;
 		//I-type Instructions
@@ -372,9 +377,9 @@ void decode_instructions(unsigned int in)
 		//illegal Instructions
 		default:
 //			snap << "illegal" << endl;
-			cout << "illegal instruction found at 0x" << setfill('0') << setw(8) << hex << reg_value[PC];
+			cout << "illegal instruction found at 0x" << setfill('0') << setw(8) << hex << uppercase << reg_value[PC]-4 << endl;
 			exit(0);
-		break;
+			break;
 	}
 	reg_value[0] = 0;
 	show_set.erase(0);

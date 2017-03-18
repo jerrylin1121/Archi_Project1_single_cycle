@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <cstdlib>
 #include "instruction.h"
 #include "memory.h"
 #include "regfile.h"
@@ -25,6 +26,10 @@ int main()
 		snap << endl << endl;
 		++cycle;
 		reg_value[PC] += 4;
+		if(reg_value[PC]>1024 || reg_value[PC]<0){
+			cout << "illegal , I memory address overflow" << endl;
+			exit(0);
+		}
 		decode_instructions(ins_mem[(reg_value[(PC)]/4)-1]);
 	}
     return 0;

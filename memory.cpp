@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "regfile.h"
 #include "memory.h"
 #include "error.h"
@@ -9,6 +10,7 @@ unsigned int num_of_ins;
 unsigned int data_mem[1024];
 unsigned int num_of_data;
 extern bool halt; 
+extern fstream snap;
 unsigned int read_4_byte_int(ifstream *in)
 {
 	unsigned int c=0, rt=0;
@@ -31,8 +33,13 @@ unsigned int read_byte_int(ifstream *in)
 void load_instruction(ifstream *in)
 {
 	reg_value[PC] = read_4_byte_int(in);
+	if(reg_value[PC]==0x80000000) snap << "yes" << endl;
 	num_of_ins = read_4_byte_int(in);
 	for(int i=0; i<num_of_ins; ++i){
+		if(((reg_value[PC]/4)+i)<0 || ((reg_value[PC]/4)+i)>255){
+			cout << "illegal Iimage..., loaded address is over 1K" << endl;
+			exit(0);
+		}
 		ins_mem[i+(reg_value[PC]/4)] = read_4_byte_int(in);
 	}	
 }
