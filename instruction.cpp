@@ -327,8 +327,6 @@ void decode_instructions(unsigned int in)
 //			snap << "beq $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
 			C = (C << 16) >> 16;
 
-			detect_number_overflow(reg_value[PC]>=0, 4*C>=0, (reg_value[PC]+4*C)>=0);
-
 			if(reg_value[rs]==reg_value[rt]){
 				reg_value[PC] = reg_value[PC] + 4*C;
 			}
@@ -337,8 +335,6 @@ void decode_instructions(unsigned int in)
 //			snap << "bne $" << rs << " $" << rt << " " << setfill('0') << setw(4) << hex << C << endl;
 			C = (C << 16) >> 16;
 
-			detect_number_overflow(reg_value[PC]>=0, 4*C>=0, (reg_value[PC]+4*C)>=0);
-
 			if(reg_value[rs]!=reg_value[rt]){
 				reg_value[PC] = reg_value[PC] + 4*C;
 			}
@@ -346,8 +342,6 @@ void decode_instructions(unsigned int in)
 		case 0x07:
 //			snap << "bgtz $" << rs << " " << setfill('0') << setw(4) << hex << C << endl;
 			C = (C << 16) >> 16;
-
-			detect_number_overflow(reg_value[PC]>=0, 4*C>=0, (reg_value[PC]+4*C)>=0);
 
 			if(reg_value[rs]>0){
 				reg_value[PC] = reg_value[PC] + 4*C;

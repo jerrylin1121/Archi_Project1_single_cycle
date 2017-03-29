@@ -5,7 +5,7 @@
 #include "memory.h"
 #include "error.h"
 #include "regfile.h"
-fstream error("_error_dump.rpt", ios::out);
+fstream error("error_dump.rpt", ios::out);
 extern int cycle;
 extern bool halt;
 void write_reg0(int index)

@@ -7,7 +7,7 @@
 #include "regfile.h"
 
 using namespace std;
-fstream snap("_snapshot.rpt", fstream::out);
+fstream snap("snapshot.rpt", fstream::out);
 int cycle = 0;
 bool halt = false;
 
